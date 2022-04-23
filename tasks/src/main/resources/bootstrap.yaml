@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: tasks
+  profiles:
+    active:
+    - dev
+  cloud:
+    config:
+      uri:
+      - http://localhost:10003

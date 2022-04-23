@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  config:
+    activate:
+      on-profile: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+          - classpath:/config
+server:
+  port: 10003
