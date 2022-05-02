@@ -1,10 +1,10 @@
-package com.dailyservices.tasks;
+package com.dailyroutines.routines;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TasksApplicationTests {
+class RoutinesApplicationTests {
 
 	@Test
 	void contextLoads() {

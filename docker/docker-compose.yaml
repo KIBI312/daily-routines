@@ -6,7 +6,8 @@ services:
       - "10001:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
+    volumes:
+        - ./init.sql:/docker-entrypoint-initdb.d/1-init.sql
     networks:
       backend:
         aliases:
@@ -19,15 +20,17 @@ services:
     environment:
       - KEYCLOAK_USER=${KEYCLOAK_USER}
       - KEYCLOAK_PASSWORD=${KEYCLOAK_PASSWORD}
-      - DB_DATABASE=${MYSQL_DATABASE}
+      - DB_DATABASE=keycloak
       - DB_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - DB_USER=root
       - DB_VENDOR=mysql
-    # command:
-    #   - "-b 0.0.0.0"
-    #   - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
-    #   - "-Dkeycloak.profile.feature.scripts=enabled"
-    #   - "-Dkeycloak.profile.feature.upload_scripts=enabled"
+    volumes:
+        - ./realm-export.json:/opt/jboss/keycloak/realm-export.json
+    command:
+      - "-b 0.0.0.0"
+      - "-Dkeycloak.import=/opt/jboss/keycloak/realm-export.json"
+      - "-Dkeycloak.profile.feature.scripts=enabled"
+      - "-Dkeycloak.profile.feature.upload_scripts=enabled"
     networks:
       backend:
         aliases:

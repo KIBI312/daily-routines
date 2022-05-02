@@ -1,9 +1,9 @@
 spring:
   application:
-    name: tasks
+    name: routines
   profiles:
     active:
-    - dev
+    - native
   cloud:
     config:
       uri:
