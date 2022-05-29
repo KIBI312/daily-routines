@@ -43,32 +43,6 @@
                 </div>
             </#if>
 
-            <div class="form-group">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.work_hours" class="${properties.kcLabelClass!}">
-                      Work Hours</label>
-                </div>
-            
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="int" class="${properties.kcInputClass!}" 
-                      id="user.attributes.work_hours" name="user.attributes.work_hours" 
-                      value="${(register.formData['user.attributes.work_hours']!'')}"/>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="${properties.kcLabelWrapperClass!}">
-                    <label for="user.attributes.sleep_hours" class="${properties.kcLabelClass!}">
-                      Sleep Hours</label>
-                </div>
-            
-                <div class="${properties.kcInputWrapperClass!}">
-                    <input type="int" class="${properties.kcInputClass!}" 
-                      id="user.attributes.sleep_hours" name="user.attributes.sleep_hours" 
-                      value="${(register.formData['user.attributes.sleep_hours']!'')}"/>
-                </div>
-            </div>
-
             <#if passwordRequired??>
                 <div class="${properties.kcFormGroupClass!}">
                     <div class="${properties.kcLabelWrapperClass!}">

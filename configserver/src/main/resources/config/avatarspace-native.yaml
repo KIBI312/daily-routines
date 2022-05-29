@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:10001/routines
+    username: root
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
+        id:
+          new_generator_mappings: false
+keycloak:
+  realm: spring-realm
+  auth-server-url: http://localhost:10002/auth
+  resource: avatarspace
+  public-client: true
+  security-constraints[0]: 
+    authRoles[0]: user
+    securityCollections[0]:
+      patterns[0]: /*
+
+server:
+  port: 10004
