@@ -7,6 +7,9 @@ spring:
       port: 27017
       host: 172.22.0.2
       database: springhost
+  mvc:
+    format:
+      time: HH:mm
 keycloak:
   realm: spring-realm
   auth-server-url: http://localhost:10002/auth
