@@ -31,12 +31,7 @@ public class RoutineController {
 
     @PostMapping(value = "/routine/create", consumes = "application/json", produces = "application/json")
     public String createRoutine(@RequestBody RoutineDto routineDto, HttpServletResponse response) {
-        try {
-            
-            return routineService.createRoutine(routineDto);
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+        return routineService.createRoutine(routineDto);
     }
 
     @PostMapping(value = "/routine/update", consumes = "application/json", produces = "application/json")
@@ -46,11 +41,7 @@ public class RoutineController {
 
     @PostMapping(value = "/routine/get", consumes = "application/json", produces = "application/json")
     public Routine getRoutine(@RequestBody String id, HttpServletResponse response) {
-        logger.error(id);
-        TimeRange time = new TimeRange(LocalTime.of(11, 0), LocalTime.of(13,0));
         Routine routine = routineRepository.findById(id).get();
-        logger.error(routine.getTime().calculateDuration().toString());
-        logger.error(routine.getTime().doesContain(time).toString());
         return routine;
     }
 }

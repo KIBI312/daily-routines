@@ -5,7 +5,7 @@ spring:
       username: root
       password: example
       port: 27017
-      host: 172.22.0.2
+      host: 172.26.0.5
       database: springhost
   mvc:
     format:

@@ -2,6 +2,7 @@ package com.dailyroutines.routines.model.Routine;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.List;
 
 import lombok.Data;
 
@@ -28,6 +29,13 @@ public class TimeRange {
             return true;
         }
         return false;
+    }
+
+    public List<TimeRange> insertTimeRange(TimeRange timeRange) {
+        TimeRange firstRange = new TimeRange(this.start, timeRange.getStart());
+        TimeRange thirdRange = new TimeRange(timeRange.getEnd(), this.end);
+        List<TimeRange> result = List.of(firstRange, timeRange, thirdRange);
+        return result;
     }
 
 }
