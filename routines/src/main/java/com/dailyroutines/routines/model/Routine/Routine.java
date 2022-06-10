@@ -14,7 +14,6 @@ import lombok.NoArgsConstructor;
 public class Routine {
     @Id
     private String id;
-    private String keycloakId;
     private String name;
     private String description;
     private Category category;
@@ -30,8 +29,7 @@ public class Routine {
         coming, inProgress, delayed, cancelled
     }
 
-    public Routine(String keycloakId, RoutineDto routineDto) {
-        this.keycloakId = keycloakId;
+    public Routine(RoutineDto routineDto) {
         this.name = routineDto.getName();
         this.description = routineDto.getDescription();
         this.category = routineDto.getCategory();

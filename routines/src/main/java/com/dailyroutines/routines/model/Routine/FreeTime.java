@@ -16,4 +16,17 @@ public class FreeTime {
         periods.add(wholeDay);
     }
 
+    public void allocateTime(TimeRange routineTime) {
+        TimeRange period = periods.stream()
+                .filter(freeTime -> freeTime.doesContain(routineTime)).findFirst().get();
+        int indexOf = this.periods.indexOf(period);
+        List<TimeRange> replacement = period.insertTimeRange(routineTime);
+        this.periods.remove(period);
+        this.periods.addAll(indexOf, replacement);
+    }
+
+    public void unallocateTime() {
+
+    }
+
 }

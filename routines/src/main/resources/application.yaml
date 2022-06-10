@@ -1,24 +1,25 @@
 spring:
+  application:
+    name: routines
   data:
     mongodb:
       authentication-database: admin
       username: root
       password: example
       port: 27017
-      host: 172.26.0.5
+      host: 172.20.0.3
       database: springhost
   mvc:
     format:
       time: HH:mm
 keycloak:
   realm: spring-realm
-  auth-server-url: http://localhost:10002/auth
+  auth-server-url: http://192.168.0.36:10002/auth
   resource: routines
   public-client: true
   security-constraints[0]: 
     authRoles[0]: user
     securityCollections[0]:
       patterns[0]: /*
-
 server:
   port: 10004

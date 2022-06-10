@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -27,6 +26,9 @@ public class TimeRangeTest {
     void testIllegalArgumentExceptionOnConstructor() {
         assertThrows(IllegalArgumentException.class, ()->{
             timeRange = new TimeRange(LocalTime.of(13, 0), LocalTime.of(12, 30));
+        });
+        assertThrows(IllegalArgumentException.class, ()->{
+            timeRange = new TimeRange(LocalTime.of(12, 30), LocalTime.of(12, 30));
         });
     }
 
@@ -61,10 +63,10 @@ public class TimeRangeTest {
     @Test
     void testInsertTimeRange() {
         TimeRange time = new TimeRange(LocalTime.of(11, 0), LocalTime.of(11, 30));
-        TimeRange time1 = new TimeRange(LocalTime.of(10, 0), LocalTime.of(11, 0));
-        TimeRange time3 = new TimeRange(LocalTime.of(11, 30), LocalTime.of(12, 30));
+        TimeRange beforeInsertion = new TimeRange(LocalTime.of(10, 0), LocalTime.of(11, 0));
+        TimeRange afterInsertion = new TimeRange(LocalTime.of(11, 30), LocalTime.of(12, 30));
         List<TimeRange> timeList1 = timeRange.insertTimeRange(time);
-        List<TimeRange> timeList2 = List.of(time1, time, time3);
+        List<TimeRange> timeList2 = List.of(beforeInsertion,afterInsertion);
         assertEquals(timeList1, timeList2);
     }
 }

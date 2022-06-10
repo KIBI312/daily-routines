@@ -16,17 +16,17 @@ public class RoutineService {
     @Autowired
     RoutineRepository routineRepository;
     
-    public String createRoutine(RoutineDto routineDto) {
-        Routine routine = new Routine(keycloakService.getKeycloakUserId(), routineDto);
+    public Routine createRoutine(RoutineDto routineDto) {
+        Routine routine = new Routine(routineDto);
         routineRepository.save(routine);
-        return "Success";
+        return routine;
     }
 
-    public String updateStatus(RoutineStatusDto routineStatusDto) {
-        routineRepository.findByName("test").get();
-        // routine.setStatus(routineStatusDto.getStatus());
-        // routineRepository.save(routine);
-        return "Success";
-    }
+    // public String updateStatus(RoutineStatusDto routineStatusDto) {
+    //     routineRepository.findByName("test").get();
+    //     // routine.setStatus(routineStatusDto.getStatus());
+    //     // routineRepository.save(routine);
+    //     return "Success";
+    // }
 
 }
